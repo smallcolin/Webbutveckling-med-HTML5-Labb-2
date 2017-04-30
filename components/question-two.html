@@ -1,0 +1,58 @@
+<dom-module id="question-two">
+
+	<template>
+		<style type="text/css">
+			
+		</style>
+		<div id="question-two">
+			<h3>Question 2</h3>
+			<h4>Name the animal in the picture below…</h4>
+			<paper-card>
+				<iron-image style="width:250px; height:250px; background-color: lightgray;"sizing="cover" preload fade src="../img/polar.jpeg"></iron-image>
+			</paper-card><br />
+			<template is="dom-repeat" items="{{alternatives}}">
+				<div style="margin-top: 20px;">{{item.number}}. {{item.animal}} <input data-index="{{index}}" on-click="answerTwo" type="radio" /></div>
+			</template>
+			<div id="result2"></div>
+		</div>
+
+	</template>
+	<script>
+		
+		Polymer ({
+			is: "question-two",
+			answerTwo: function (event) {
+				// console.log(event.target.dataIndex);
+				var that = event.target.dataIndex;
+
+				if ( that === 1 ) {
+					var next = this;
+					document.getElementById("result2").innerHTML = "<h3>Correct!  Next question…</h3>";
+					setTimeout(function() { 
+						next.fire("right-answer");
+					}, 2000);
+				}
+				else {
+					document.getElementById("result2").innerHTML = "<h3>That's wrong! Please try again…</h3>";
+					setTimeout(function() { 
+						document.getElementById("result2").innerHTML = "";
+					}, 2000);
+				}
+
+
+			},
+			properties: {
+				name: String
+			},
+			ready: function () {
+				this.alternatives = [
+					{number: "1", animal: "Seal"},
+					{number: "2", animal: "Polar Bear"},
+					{number: "3", animal: "Dolphin"}
+				]
+			}
+		});
+	
+	</script>
+
+</dom-module>

@@ -1,0 +1,62 @@
+<link rel="import" href="question-one.html" />
+<link rel="import" href="question-two.html" />
+<link rel="import" href="question-three.html" />
+
+<dom-module id="quiz-questions">
+	<style type="text/css">
+		
+	</style>
+
+	<template>
+		<div id="instructions-modal" class="center">
+			<paper-button raised onclick="modal.open()">Quiz Instructions</paper-button>
+			<paper-dialog id="modal" modal>
+				<p>For each question, choose an answer by ticking the box next to it.
+				</p>
+			<div class="buttons">
+				<paper-button dialog-confirm autofocus>Close</paper-button>
+			</div>
+			</paper-dialog>
+		</div>
+
+		<div class="nav-routing">
+			<div class="flex center">
+				<!-- {{progress}}
+				<h1>{{isActive(0, progress)}}</h1> -->
+				<template is="dom-if" if="{{isActive(0, progress)}}">
+					<p id="p-one" name="question-one"><question-one on-right-answer="onRightAnswer"></question-one></p>
+			         	</template>
+			         	<template is="dom-if" if="{{isActive(1, progress)}}">
+			          	<p name="question-two"><question-two on-right-answer="onRightAnswer"></question-two></p>
+			          </template>
+			          <template is="dom-if" if="{{isActive(2, progress)}}">
+			            	<p name="question-three"><question-three></question-three></p>
+			          </template>
+			</div>
+		</div>
+	</template>
+	<script>
+		Polymer ({ 
+			is: 'quiz-questions',
+			onRightAnswer: function (event) {
+				console.log(event);
+				console.log(event.target);
+				console.log(this.question);
+				this.progress++;
+			},
+			isActive: function (index, progress) {
+				return index === progress;
+			},
+			properties: {
+				progress: {
+					type: Number,
+					value: 0
+				},
+				question: String
+			},
+			ready: function () {
+				this.progress = 0;
+			}
+		});
+	</script>
+</dom-module>

@@ -1,0 +1,65 @@
+<link href="../bower_components/polymer/polymer.html" rel="import" />
+<link href="../bower_components/app-route/app-route.html" rel="import" />
+<link href="../bower_components/app-route/app-location.html" rel="import" />
+<link href="../bower_components/iron-pages/iron-pages.html" rel="import" />
+<link href="../bower_components/app-layout/app-layout.html" rel="import" />
+<link href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html" rel="import" />
+<link href="../bower_components/paper-button/paper-button.html" rel="import" />
+<link href="../bower_components/paper-card/paper-card.html" rel="import" />
+<link href="../bower_components/paper-item/paper-item.html" rel="import" />
+<link href="../bower_components/paper-listbox/paper-listbox.html" rel="import" />
+<link href="../bower_components/paper-styles/paper-styles.html" rel="import" />
+<link href="../bower_components/paper-dialog/paper-dialog.html" rel="import" />
+<link href="../bower_components/paper-icon-button/paper-icon-button.html" rel="import" />
+<link href="../bower_components/iron-icons/iron-icons.html" rel="import" />
+<link href="../bower_components/iron-ajax/iron-ajax.html" rel="import" />
+
+<link rel="import" href="drawer-routing.html" />
+<link rel="import" href="quiz-questions.html" />
+<link rel="import" href="jon-cities.html" />
+
+<dom-module id="index-app">
+<style include="iron-flex iron-flex-alignment" is="custom-style"></style>
+	<template>
+		<app-location route="{{route}}" use-hash-as-path></app-location>
+
+		<app-route data="{{data}}" pattern=":page" route="{{route}}" tail="{{question}}"></app-route>
+		<app-route data="{{data2}}" pattern="/:question" route="{{question}}"></app-route>
+
+		<app-header-layout style="z-index:9999;">  
+			<app-header effects="resize-title" class="white">
+				<app-toolbar>
+					<paper-icon-button icon="menu" onclick="drawer.toggle()"></paper-icon-button>
+						<div main-title>Labb 2 - Colin Sweeney</div>
+				</app-toolbar>
+			</app-header>
+			<app-drawer id="drawer" style="margin-top: 70px;" swipe-open>
+				<div class="infobox">
+					<p><drawer-routing></drawer-routing></p>
+				</div>
+				
+			</app-drawer>  
+		</app-header-layout>
+
+		<div class="layout vertical">
+			<div style="height: 400px;"><img class="img-puff"src="../img/jungle.jpeg" /></div>
+			<div class="centermargin flex horizontal layout wrap">
+				<iron-pages attr-for-selected="name" selected="[[data.page]]">
+					<p name="quiz"><quiz-questions question="{{data2.question}}"></quiz-questions></p>
+					<p name="cities" style="text-align: center;"><jon-cities></jon-cities></p>
+				</iron-pages>
+			</div>		
+			<div id="footer" class="center" style="background-color: yellow;"><p>&copy; Colin Sweeney 2017</p></div>
+		</div>
+
+	</template>
+	<script type="text/javascript">
+		Polymer ({
+			is: "index-app",
+			properties: {
+				name: String
+			}
+		});
+	</script>
+</dom-module>
+

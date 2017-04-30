@@ -1,0 +1,64 @@
+<dom-module id="question-three">
+
+	<template>
+		<style type="text/css">
+			img {
+				width: 298px; 
+				border: 1px solid black;
+			}
+		</style>
+		<div id="question-three">
+			<h3>Question 3</h3>
+			<h4>Name the animal in the picture below…</h4>
+			<paper-card>
+				<iron-image style="width:250px; height:250px; background-color: lightgray;"sizing="cover" preload fade src="../img/cow.jpeg"></iron-image>
+			</paper-card><br />
+			<template is="dom-repeat" items="{{alternatives}}">
+				<div style="margin-top: 20px;">{{item.number}}. {{item.animal}} <input data-index="{{index}}" on-click="answerThree" type="radio" /></div>
+			</template>
+			<div id="result3"></div>
+		</div>
+	</template>
+	<script>
+		
+		Polymer ({
+			is: "question-three",
+			answerThree: function (event) {
+				var that = event.target.dataIndex;
+
+				if ( that === 0 ) {
+					document.getElementById("result3").innerHTML = "<h3>Well Done. You've completed the quiz!</h3>";
+					setTimeout(function() { 
+						document.getElementById("result3").innerHTML = "";
+					}, 3000);
+					setTimeout(function(){
+						document.getElementById("result3").innerHTML = "<h3>Here is your prize……</h3>";
+					}, 3000);
+					setTimeout(function() {
+						document.getElementById("result3").appendChild(img).setAttribute("src", "img/sliced-cucumber.jpeg");
+					}, 3000);
+				}
+				else {
+					document.getElementById("result3").innerHTML = "<h3>That's wrong! Please try again…</h3>";
+					setTimeout(function() { 
+						document.getElementById("result3").innerHTML = "";
+					}, 2000);
+				}
+
+
+			},
+			properties: {
+				name: String
+			},
+			ready: function () {
+				this.alternatives = [
+					{number: "1", animal: "Cow"},
+					{number: "2", animal: "Sheep"},
+					{number: "3", animal: "Chicken"}
+				]
+			}
+		});
+	
+	</script>
+
+</dom-module>

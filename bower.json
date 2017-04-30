@@ -1,0 +1,24 @@
+{
+  "name": "labb_2_colin_sweeney",
+  "authors": [
+    "Colin Sweeney <colinsweeney2000@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.8.0",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.10",
+    "app-route": "PolymerElements/app-route#^0.9.3",
+    "app-layout": "^0.10.7"
+  }
+}

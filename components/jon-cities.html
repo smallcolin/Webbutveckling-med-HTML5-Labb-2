@@ -1,0 +1,47 @@
+<dom-module id="jon-cities">
+	<template>
+		<style type="text/css">
+			margin-top: 40px;
+			.aligncenter {
+				text-align: center;
+			}
+		</style>
+
+		<h3>Want to see a list of Sweden's most populated cities?</h3>
+		<paper-button id="cities" raised class="green">
+		<iron-icon icon="star"></iron-icon>
+			Click Here…
+		</paper-button>
+
+		
+		<div id="callCities" class="aligncenter"></div>
+		<iron-ajax id="irons" on-response="handleResponse" url="http://cities.jonkri.se/0.0.0/cities"></iron-ajax>
+
+		<template is="dom-repeat" items="{{items}}">
+			<div class="aligncenter">City: {{item.name}}, Population: {{item.population}}</div>
+		</template> 
+
+	</template>
+	<script type="text/javascript">
+		Polymer ({
+			is: "jon-cities",
+			properties: {
+				name: String
+			},
+			citiesButton: function () {
+				document.getElementById("callCities").innerHTML = "<h3>Swedish Cities</h3>";
+				this.$.irons.generateRequest();
+			},
+			handleResponse: function (data) {
+				// console.log(data.detail.response);
+				this.items = data.detail.response.items;
+			},
+			function () {
+				var element = this.$.cities;
+			},
+			listeners: {
+				"cities.click": "citiesButton"
+			}
+		});
+	</script>
+</dom-module>
