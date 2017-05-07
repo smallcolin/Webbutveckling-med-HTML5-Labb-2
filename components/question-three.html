@@ -34,9 +34,12 @@
 					setTimeout(function(){
 						document.getElementById("result3").innerHTML = "<h3>Here is your prize……</h3>";
 					}, 3000);
-					setTimeout(function() {
-						document.getElementById("result3").appendChild(img).setAttribute("src", "img/sliced-cucumber.jpeg");
+					setTimeout(function() { 
+						document.getElementById("result3").innerHTML = "";
 					}, 3000);
+					setTimeout(function() {
+						var prize = document.getElementById("result3").appendChild(img).setAttribute("src", "../img/sliced-cucumber.jpeg");
+					}, 2000);
 				}
 				else {
 					document.getElementById("result3").innerHTML = "<h3>That's wrong! Please try again…</h3>";
@@ -55,7 +58,7 @@
 					{number: "1", animal: "Cow"},
 					{number: "2", animal: "Sheep"},
 					{number: "3", animal: "Chicken"}
-				]
+				];
 			}
 		});
 	

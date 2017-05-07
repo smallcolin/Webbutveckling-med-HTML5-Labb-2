@@ -25,13 +25,13 @@
 				<h1>{{isActive(0, progress)}}</h1> -->
 				<template is="dom-if" if="{{isActive(0, progress)}}">
 					<p id="p-one" name="question-one"><question-one on-right-answer="onRightAnswer"></question-one></p>
-			         	</template>
-			         	<template is="dom-if" if="{{isActive(1, progress)}}">
-			          	<p name="question-two"><question-two on-right-answer="onRightAnswer"></question-two></p>
-			          </template>
-			          <template is="dom-if" if="{{isActive(2, progress)}}">
-			            	<p name="question-three"><question-three></question-three></p>
-			          </template>
+	         	</template>
+	         	<template is="dom-if" if="{{isActive(1, progress)}}">
+	          		<p name="question-two"><question-two on-right-answer="onRightAnswer"></question-two></p>
+	          	</template>
+	          	<template is="dom-if" if="{{isActive(2, progress)}}">
+	            	<p name="question-three"><question-three></question-three></p>
+	          	</template>
 			</div>
 		</div>
 	</template>
