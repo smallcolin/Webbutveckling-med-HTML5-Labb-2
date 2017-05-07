@@ -34,12 +34,13 @@
 					setTimeout(function(){
 						document.getElementById("result3").innerHTML = "<h3>Here is your prize……</h3>";
 					}, 3000);
-					setTimeout(function() { 
-						document.getElementById("result3").innerHTML = "";
-					}, 3000);
 					setTimeout(function() {
-						var prize = document.getElementById("result3").appendChild(img).setAttribute("src", "../img/sliced-cucumber.jpeg");
-					}, 2000);
+						var img = document.createElement('img');
+						var prize = document.getElementById("result3");
+						var prizeImg = prize.appendChild(img);
+						prizeImg.setAttribute("src", "img/sliced-cucumber.jpeg");
+						prizeImg.setAttribute("style", "width:250px; height: 250px");
+					}, 3000);
 				}
 				else {
 					document.getElementById("result3").innerHTML = "<h3>That's wrong! Please try again…</h3>";
