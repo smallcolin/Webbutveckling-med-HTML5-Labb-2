@@ -9,4 +9,7 @@ bower install
 npm install
 ```
 
-## Run via index.html
+## Instructions
+```
+Run via index.html
+```
